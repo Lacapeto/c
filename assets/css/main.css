@@ -1,0 +1,2202 @@
+/* C2P Hub - base, layout and components. Tokens live in tokens.css. */
+
+
+/* 02. BASE ELEMENTS & TYPOGRAPHY */
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: var(--lh-normal);
+  color: var(--color-body);
+  background-color: var(--surface-page);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-ink);
+  font-weight: 700;
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--fs-3xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-display);
+}
+
+h2 {
+  font-size: var(--fs-2xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-display);
+}
+
+h3 { font-size: var(--fs-xl); }
+h4 { font-size: var(--fs-lg); }
+h5 { font-size: var(--fs-md); }
+
+h6 {
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+p {
+  margin-bottom: var(--space-4);
+  max-width: 68ch;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+strong { font-weight: 650; color: var(--color-ink); }
+
+small { font-size: var(--fs-xs); }
+
+code, kbd, samp, pre {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+code {
+  background: var(--color-blue-tint);
+  color: var(--color-blue-active);
+  padding: 0.1em 0.4em;
+  border-radius: var(--radius-sm);
+}
+
+/* reset.css strips anchors, so inline links restate colour and underline. */
+.prose a,
+a.text-link,
+.hint a,
+.form-note a,
+.data-note a,
+.detail-list dd a,
+.accordion__panel a,
+.data-table td a,
+.data-table th a {
+  color: var(--color-blue);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+  transition: color var(--speed) var(--ease);
+}
+
+.prose a:hover,
+a.text-link:hover,
+.hint a:hover,
+.form-note a:hover,
+.data-note a:hover,
+.detail-list dd a:hover,
+.accordion__panel a:hover,
+.data-table td a:hover,
+.data-table th a:hover {
+  color: var(--color-blue-active);
+  text-decoration-thickness: 2px;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--color-border);
+  margin: var(--space-7) 0;
+}
+
+blockquote {
+  border-left: 3px solid var(--color-blue);
+  padding-left: var(--space-4);
+  font-size: var(--fs-md);
+  color: var(--color-ink);
+}
+
+/* Global focus visibility — never removed, only restyled. */
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+  border-radius: var(--radius-sm);
+}
+
+::selection {
+  background: var(--color-blue);
+  color: var(--color-white);
+}
+
+/* The sticky header would cover fragment targets, so each reserves its height. */
+[id] {
+  scroll-margin-top: calc(var(--header-height) + var(--space-4));
+}
+
+/* The fixed-position lightbox must not inherit that offset. */
+.lightbox[id] {
+  scroll-margin-top: 0;
+}
+
+/* 03. LAYOUT PRIMITIVES */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.container--narrow {
+  max-width: var(--container-narrow);
+}
+
+.section {
+  padding-block: var(--space-8);
+}
+
+.section--tight { padding-block: var(--space-7); }
+.section--loose { padding-block: var(--space-9); }
+
+.section--sunken {
+  background: var(--surface-sunken);
+  border-block: 1px solid var(--color-border);
+}
+
+.section--tinted {
+  background: var(--color-blue-tint);
+  border-block: 1px solid var(--color-blue-tint-strong);
+}
+
+.section--brand {
+  background: var(--surface-brand);
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.section--brand h1,
+.section--brand h2,
+.section--brand h3,
+.section--brand h4 {
+  color: var(--color-white);
+}
+
+.section--brand h6 {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* Section heading block — eyebrow + title + lede, centred by default. */
+.section-head {
+  margin-bottom: var(--space-6);
+  text-align: center;
+}
+
+.section-head--left {
+  text-align: left;
+}
+
+.section-head .eyebrow {
+  margin-bottom: var(--space-2);
+}
+
+.section-head p {
+  color: var(--color-muted);
+  font-size: var(--fs-md);
+  margin-inline: auto;
+  margin-top: var(--space-3);
+  max-width: 62ch;
+}
+
+.section-head--left p {
+  margin-inline: 0;
+}
+
+/* Uppercase micro label. Tracking does the work; no rule, no plate. */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* Generic auto-fitting grid used by most card collections. */
+.grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: 1fr;
+}
+
+.stack > * + * {
+  margin-top: var(--space-4);
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.cluster--center {
+  justify-content: center;
+}
+
+/* 04. ACCESSIBILITY HELPERS */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--space-4);
+  z-index: 100;
+  background: var(--color-blue);
+  color: var(--color-white);
+  padding: var(--space-3) var(--space-4);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  font-weight: 600;
+  transition: top var(--speed) var(--ease);
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Consistent inline-SVG icon sizing. Icons inherit colour from their parent. */
+.icon {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon--sm { width: 16px; height: 16px; }
+.icon--lg { width: 26px; height: 26px; }
+.icon--filled { fill: currentColor; stroke: none; }
+
+/* The icon stands on its own; the plate is a bare box so nothing competes with it. */
+.icon-plate {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  color: var(--color-ink);
+  flex: none;
+  transition: color var(--speed) var(--ease);
+}
+
+.icon-plate .icon {
+  width: 28px;
+  height: 28px;
+  stroke-width: 1.25;
+}
+
+.icon-plate--solid .icon {
+  stroke-width: 1.9;
+}
+
+.icon-plate--sm {
+  width: 24px;
+  height: 24px;
+}
+
+/* 05. BUTTONS & PILLS */
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0.95rem 1.75rem;
+  border-radius: var(--radius-btn);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  line-height: 1;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-align: center;
+  transition:
+    background-color var(--speed) var(--ease),
+    border-color var(--speed) var(--ease),
+    color var(--speed) var(--ease),
+    box-shadow var(--speed) var(--ease),
+    transform var(--speed) var(--ease);
+}
+
+/* The arrow slides on hover: smallest cue that the control leads somewhere. */
+.btn .icon {
+  transition: transform var(--speed) var(--ease);
+}
+
+.btn:hover .icon {
+  transform: translateX(3px);
+}
+
+.btn:active {
+  transform: translateY(1px);
+  transition-duration: var(--speed-fast);
+}
+
+.btn:active .icon {
+  transform: translateX(1px);
+}
+
+.btn-primary {
+  background: var(--color-blue);
+  color: var(--color-white);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  background: var(--color-ink-soft);
+}
+
+.btn-primary:active {
+  background: var(--color-blue-active);
+  box-shadow: none;
+  transform: translateY(1px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-ink);
+  border-color: var(--color-ink);
+}
+
+.btn-secondary:hover {
+  background: var(--color-ink);
+  color: var(--color-white);
+}
+
+.btn-secondary:active {
+  background: var(--color-ink-soft);
+}
+
+/* Reads as a tracked underline, not a box - the quietest way out of a section. */
+.btn-ghost {
+  background: transparent;
+  color: var(--color-ink);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--color-line-strong);
+}
+
+.btn-ghost:hover {
+  border-bottom-color: var(--color-ink);
+  gap: var(--space-3);
+}
+
+.btn-inverse {
+  background: var(--color-white);
+  color: var(--color-blue);
+}
+
+.btn-inverse:hover {
+  background: var(--color-wash-deep);
+}
+
+.btn-outline-inverse {
+  background: transparent;
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.btn-outline-inverse:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--color-white);
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.btn--lg {
+  padding: 0.85rem 1.75rem;
+  font-size: var(--fs-base);
+}
+
+/* Small status / category marks */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  line-height: 1;
+  background: transparent;
+  color: var(--color-muted);
+  border: 1px solid var(--color-line-strong);
+  white-space: nowrap;
+}
+
+.tag--solid {
+  background: var(--color-ink);
+  color: var(--color-white);
+  border-color: var(--color-ink);
+}
+
+.tag--quiet {
+  background: var(--color-wash);
+  color: var(--color-muted);
+  border-color: transparent;
+}
+
+.tag--placeholder {
+  color: var(--color-danger);
+  border-style: dashed;
+  border-color: var(--color-danger);
+}
+
+/* 06. HEADER, BRAND, PRIMARY NAVIGATION - the mobile menu is the CSS checkbox hack. */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(1.4) blur(10px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--header-height);
+  position: relative;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-right: auto;
+  border-radius: var(--radius-sm);
+}
+
+/* A landscape mark (~1.9:1), so sized by height and left to find its own width. */
+.brand-mark {
+  height: 34px;
+  width: auto;
+  object-fit: contain;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand-name {
+  font-size: var(--fs-base);
+  font-weight: 800;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-ink);
+}
+
+.brand-tagline {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* --- The toggle ------------------------------------------------------- */
+
+.nav-toggle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-toggle-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  color: var(--color-blue);
+  background: var(--color-white);
+  cursor: pointer;
+  transition: background var(--speed) var(--ease), border-color var(--speed) var(--ease);
+}
+
+.nav-toggle-label:hover {
+  background: var(--color-blue-tint);
+  border-color: var(--color-blue);
+}
+
+/* Keyboard users still get a ring even though the input itself is hidden. */
+.nav-toggle:focus-visible + .nav-toggle-label {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
+.nav-toggle-label .icon-close,
+.nav-toggle:checked + .nav-toggle-label .icon-open {
+  display: none;
+}
+
+.nav-toggle:checked + .nav-toggle-label .icon-close {
+  display: block;
+}
+
+/* --- The panel -------------------------------------------------------- */
+
+.site-nav {
+  position: absolute;
+  top: calc(100% + 1px);
+  left: 0;
+  right: 0;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  /* Collapsed by default on small screens. */
+  display: none;
+}
+
+.nav-toggle:checked ~ .site-nav {
+  display: block;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-3) var(--gutter) var(--space-4);
+  gap: 2px;
+}
+
+.nav-link {
+  display: block;
+  padding: var(--space-3) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-body);
+  transition: background var(--speed) var(--ease), color var(--speed) var(--ease);
+}
+
+.nav-link:hover {
+  background: var(--color-blue-tint);
+  color: var(--color-blue);
+}
+
+.nav-link:active {
+  background: var(--color-blue-tint-strong);
+}
+
+/* Driven by aria-current, so styling and accessibility semantics cannot drift apart. */
+.nav-link[aria-current="page"] {
+  color: var(--color-blue);
+  background: var(--color-blue-tint);
+}
+
+.header-cta {
+  display: none;
+}
+
+/* 07. HERO & THE CONCEPT -> PRODUCTION ARC */
+
+/* Landing hero: display headline over a photograph that fades into the page. */
+.hero {
+  position: relative;
+  padding-block: var(--space-9) 0;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--color-white);
+  text-align: left;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tracking-display);
+  margin-bottom: var(--space-4);
+  max-width: 14ch;
+}
+
+/* The first line sits back so the hub name carries the weight, as in the reference. */
+.hero h1 .hero__line-1 {
+  display: block;
+  font-weight: 400;
+  color: var(--color-body);
+  letter-spacing: var(--tracking-tight);
+}
+
+.hero h1 .hero__line-2 {
+  display: block;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.hero__lede {
+  font-size: var(--fs-md);
+  color: var(--color-body);
+  max-width: 46ch;
+  margin-bottom: var(--space-6);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: center;
+  margin-bottom: var(--space-8);
+}
+
+.hero__eyebrow {
+  margin-bottom: var(--space-5);
+}
+
+/* Bounds the photograph to the copy block, so it never covers the facts row. */
+.hero__stage {
+  position: relative;
+}
+
+/* In flow below the copy on small screens, behind it from 768px. */
+.hero__media {
+  position: relative;
+  margin: 0;
+  z-index: 1;
+}
+
+.hero__media img {
+  display: block;
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.08);
+}
+
+/* Fades the photograph's lower edge into the page rather than cutting it off. */
+.hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 45%,
+    rgba(255, 255, 255, 0.85) 88%,
+    var(--color-white) 100%
+  );
+  pointer-events: none;
+}
+
+/* The located-at chip from the reference: black box, white type, bottom right. */
+.hero__credit {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  background: var(--color-ink);
+  color: var(--color-white);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tracking-wide);
+  padding: 0.45rem 0.75rem;
+  margin: 0;
+}
+
+/* Hero facts: proof points in flow, left-aligned so icon and copy stay square. */
+.hero__facts {
+  display: grid;
+  gap: var(--space-5);
+  padding-block: var(--space-8);
+  list-style: none;
+  text-align: left;
+}
+
+.hero__fact {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.hero__fact .icon {
+  flex: none;
+  margin-top: 2px;
+  color: var(--color-ink);
+}
+
+.hero__fact-title {
+  display: block;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--color-ink);
+  margin-bottom: 2px;
+}
+
+.hero__fact p {
+  font-size: var(--fs-xs);
+  color: var(--color-muted);
+  line-height: var(--lh-normal);
+}
+/* --- Concept -> Production stage strip -------------------------------- */
+
+.arc {
+  display: grid;
+  gap: var(--space-4);
+  counter-reset: arc-step;
+}
+
+.arc__step {
+  position: relative;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  counter-increment: arc-step;
+  transition: border-color var(--speed) var(--ease), box-shadow var(--speed) var(--ease), transform var(--speed) var(--ease);
+}
+
+.arc__step:hover {
+  border-color: var(--color-ink);
+}
+
+.arc__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-pill);
+  background: var(--color-blue);
+  color: var(--color-white);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+}
+
+.arc__step h3 {
+  font-size: var(--fs-lg);
+  margin-bottom: var(--space-2);
+}
+
+.arc__step p {
+  font-size: var(--fs-sm);
+  color: var(--color-muted);
+}
+
+/* 08. CARDS */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-xs);
+  height: 100%;
+  transition:
+    border-color var(--speed) var(--ease),
+    box-shadow var(--speed) var(--ease),
+    transform var(--speed) var(--ease);
+}
+
+.card:hover {
+  border-color: var(--color-ink);
+}
+
+/* Card headings are sized by role, not outline level - the contact sidebar uses h2. */
+.card h2,
+.card h3 {
+  font-size: var(--fs-lg);
+  margin-bottom: var(--space-3);
+}
+
+.card p {
+  font-size: var(--fs-sm);
+  color: var(--color-muted);
+}
+
+.card__head {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--fs-xs);
+  color: var(--color-muted);
+}
+
+.card__foot {
+  margin-top: auto;
+  padding-top: var(--space-4);
+}
+
+/* Media card: image on top, body below */
+.card--media {
+  padding: 0;
+  overflow: hidden;
+}
+
+.card--media .card__body {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card--media img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  background: var(--color-blue-tint);
+}
+
+/* The emphasised card in a row: inverted rather than lifted. */
+.card--featured {
+  border-color: var(--color-ink);
+  box-shadow: inset 0 0 0 1px var(--color-ink);
+}
+
+.card--brand {
+  background: var(--color-blue);
+  border-color: var(--color-blue);
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.card--brand h3 {
+  color: var(--color-white);
+}
+
+.card--brand p {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.card--brand .card__meta {
+  border-top-color: rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Dashed treatment marks content that is deliberately a placeholder. */
+.card--placeholder {
+  border-style: dashed;
+  border-color: var(--color-danger);
+  background: var(--color-white);
+}
+
+/* Marks a photograph the hub still owes, naming the file to drop in. */
+.placeholder-media {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  aspect-ratio: 16 / 10;
+  padding: var(--space-5);
+  text-align: center;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--color-wash),
+    var(--color-wash) 10px,
+    var(--color-white) 10px,
+    var(--color-white) 20px
+  );
+  border: 1px dashed var(--color-danger);
+  color: var(--color-muted);
+}
+
+.placeholder-media__label {
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  color: var(--color-danger);
+}
+
+.placeholder-media__file {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--color-body);
+  word-break: break-all;
+}
+
+.placeholder-media__note {
+  font-size: var(--fs-xs);
+  max-width: 34ch;
+  line-height: var(--lh-normal);
+}
+
+/* --- Feature project (ParaVision) ------------------------------------- */
+
+.feature {
+  display: grid;
+  gap: var(--space-5);
+  background: var(--color-white);
+  border: 1px solid var(--color-line);
+  padding: var(--space-6);
+}
+
+.feature__media {
+  margin: 0;
+  overflow: hidden;
+  background: var(--color-wash);
+}
+
+.feature__media img {
+  width: 100%;
+  height: auto;
+}
+
+.feature__body h2 {
+  margin-bottom: var(--space-3);
+}
+
+.feature__list {
+  display: grid;
+  gap: var(--space-3);
+  margin-block: var(--space-4);
+}
+
+.feature__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--fs-sm);
+}
+
+.feature__list .icon {
+  color: var(--color-blue);
+  margin-top: 3px;
+}
+
+/* Program spec list: format / cadence / duration / capacity from programs.json. */
+
+.spec-list {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--fs-xs);
+}
+
+.spec-list > div {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.spec-list dt {
+  flex: 0 0 78px;
+  font-weight: 700;
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-muted);
+}
+
+.spec-list dd {
+  margin: 0;
+  color: var(--color-body);
+}
+
+/* --- Outcome list (ticked bullets) ------------------------------------ */
+
+.outcome-list {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  font-size: var(--fs-xs);
+}
+
+.outcome-list li {
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-start;
+  color: var(--color-body);
+}
+
+.outcome-list .icon {
+  color: var(--color-blue);
+  margin-top: 2px;
+}
+
+.outcome-list__label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-muted);
+  margin-top: var(--space-4);
+}
+
+/* --- Student directory card ------------------------------------------- */
+
+.student-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-xs);
+  transition: border-color var(--speed) var(--ease), box-shadow var(--speed) var(--ease), transform var(--speed) var(--ease);
+}
+
+.student-card:hover {
+  border-color: var(--color-ink);
+}
+
+.student-card__top {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* Monogram stands in for a photograph — no external avatar service. */
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-pill);
+  background: var(--color-blue-tint);
+  color: var(--color-blue);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  letter-spacing: 0.02em;
+  flex: none;
+  border: 1px solid var(--color-blue-tint-strong);
+}
+
+.student-card__name {
+  font-size: var(--fs-md);
+  font-weight: 700;
+  color: var(--color-ink);
+  line-height: 1.25;
+}
+
+.student-card__level {
+  font-size: var(--fs-xs);
+  color: var(--color-muted);
+}
+
+.student-card dl {
+  display: grid;
+  gap: var(--space-2);
+  font-size: var(--fs-xs);
+  margin: 0;
+}
+
+.student-card dt {
+  font-weight: 700;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.6875rem;
+}
+
+.student-card dd {
+  margin: 0;
+  color: var(--color-body);
+}
+
+/* --- Event row -------------------------------------------------------- */
+
+.event {
+  display: grid;
+  gap: var(--space-4);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-xs);
+  transition: border-color var(--speed) var(--ease), box-shadow var(--speed) var(--ease);
+}
+
+.event:hover {
+  border-color: var(--color-blue);
+  box-shadow: var(--shadow-md);
+}
+
+.event__date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 74px;
+  padding: var(--space-3) var(--space-2);
+  border-radius: var(--radius-md);
+  background: var(--color-blue);
+  color: var(--color-white);
+  flex: none;
+  line-height: 1.05;
+}
+
+.event__day {
+  font-size: var(--fs-xl);
+  font-weight: 800;
+}
+
+.event__month {
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.event__year {
+  font-size: 0.6875rem;
+  opacity: 0.75;
+}
+
+.event__body h3 {
+  font-size: var(--fs-lg);
+  margin-bottom: var(--space-2);
+}
+
+.event__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  margin-top: var(--space-3);
+  font-size: var(--fs-xs);
+  color: var(--color-muted);
+}
+
+.event__facts span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* 09. STATISTIC CALLOUT & LOGO STRIP */
+
+.stat-block {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.stat {
+  border-left: 3px solid var(--color-blue);
+  padding-left: var(--space-4);
+}
+
+.stat__value {
+  display: block;
+  font-size: var(--fs-3xl);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-blue);
+}
+
+.stat__label {
+  display: block;
+  font-size: var(--fs-md);
+  font-weight: 700;
+  color: var(--color-ink);
+  margin-top: var(--space-2);
+}
+
+.stat__note {
+  font-size: var(--fs-sm);
+  color: var(--color-muted);
+  margin-top: var(--space-1);
+}
+
+/* 10. ACCORDION & TABS (CSS-only interactive components) */
+
+/* --- <details> accordion ---------------------------------------------- */
+
+.accordion {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.accordion__item {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color var(--speed) var(--ease), box-shadow var(--speed) var(--ease);
+}
+
+.accordion__item[open] {
+  border-color: var(--color-blue);
+  box-shadow: var(--shadow-sm);
+}
+
+.accordion__summary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--fs-md);
+  font-weight: 650;
+  color: var(--color-ink);
+  transition: background var(--speed) var(--ease), color var(--speed) var(--ease);
+}
+
+.accordion__summary:hover {
+  background: var(--color-blue-tint);
+  color: var(--color-blue);
+}
+
+.accordion__summary:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: -3px;
+}
+
+.accordion__summary .chevron {
+  margin-left: auto;
+  color: var(--color-blue);
+  transition: transform var(--speed) var(--ease);
+}
+
+.accordion__item[open] .accordion__summary .chevron {
+  transform: rotate(180deg);
+}
+
+.accordion__panel {
+  padding: 0 var(--space-5) var(--space-5);
+  font-size: var(--fs-sm);
+  color: var(--color-muted);
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-4);
+}
+
+/* Radio tabs rather than :target: selection is exclusive and the URL stays clean. */
+
+.tabs {
+  position: relative;
+}
+
+.tabs__radio {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tabs__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: 0;
+  background: transparent;
+  border-bottom: 1px solid var(--color-line);
+  margin-bottom: var(--space-6);
+}
+
+.tabs__tab {
+  flex: 1 1 auto;
+  text-align: center;
+  padding: 0.7rem 1rem;
+  font-size: var(--fs-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  font-weight: 600;
+  color: var(--color-muted);
+  white-space: nowrap;
+  cursor: pointer;
+  margin-bottom: -1px;
+  border-bottom: 2px solid transparent;
+  transition: color var(--speed) var(--ease), border-color var(--speed) var(--ease);
+}
+
+.tabs__tab:hover {
+  color: var(--color-ink);
+  border-bottom-color: var(--color-line-strong);
+}
+
+.tabs__panel {
+  display: none;
+}
+
+/* Checked radio -> solid label and revealed panel; radios must precede both. */
+#tab-all:checked ~ .tabs__list [for="tab-all"],
+#tab-ai:checked ~ .tabs__list [for="tab-ai"],
+#tab-embedded:checked ~ .tabs__list [for="tab-embedded"],
+#tab-iot:checked ~ .tabs__list [for="tab-iot"] {
+  color: var(--color-ink);
+  border-bottom-color: var(--color-ink);
+}
+
+#tab-all:checked ~ .tabs__panels #panel-all,
+#tab-ai:checked ~ .tabs__panels #panel-ai,
+#tab-embedded:checked ~ .tabs__panels #panel-embedded,
+#tab-iot:checked ~ .tabs__panels #panel-iot {
+  display: block;
+}
+
+/* Keyboard focus ring for the hidden radios, rendered on their labels. */
+#tab-all.tabs__radio:focus-visible ~ .tabs__list [for="tab-all"],
+#tab-ai.tabs__radio:focus-visible ~ .tabs__list [for="tab-ai"],
+#tab-embedded.tabs__radio:focus-visible ~ .tabs__list [for="tab-embedded"],
+#tab-iot.tabs__radio:focus-visible ~ .tabs__list [for="tab-iot"] {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
+/* 11. GALLERY GRID & :target LIGHTBOX */
+
+.gallery {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: 1fr;
+}
+
+.gallery__item {
+  position: relative;
+  display: block;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-blue-tint);
+  box-shadow: var(--shadow-xs);
+  transition: box-shadow var(--speed) var(--ease), transform var(--speed) var(--ease);
+}
+
+.gallery__item:hover {
+  outline: 1px solid var(--color-ink);
+  outline-offset: -1px;
+}
+
+.gallery__item img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.gallery__caption {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: var(--space-5) var(--space-4) var(--space-3);
+  background: linear-gradient(to top, rgba(13, 17, 121, 0.88), rgba(13, 17, 121, 0));
+  color: var(--color-white);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  opacity: 0;
+  transition: opacity var(--speed) var(--ease);
+}
+
+.gallery__item:hover .gallery__caption,
+.gallery__item:focus-visible .gallery__caption {
+  opacity: 1;
+}
+
+/* Lightbox: hidden until its id is the URL fragment. */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  background: rgba(13, 17, 121, 0.82);
+}
+
+.lightbox:target {
+  display: flex;
+}
+
+.lightbox__inner {
+  position: relative;
+  z-index: 1; /* must sit above the full-bleed backdrop link */
+  width: 100%;
+  max-width: 900px;
+  max-height: 92vh;
+  overflow: auto;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+/* The image is capped too, or a short viewport pushes caption and close button away. */
+.lightbox__inner img {
+  width: 100%;
+  height: auto;
+  max-height: 62vh;
+  object-fit: contain;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.lightbox__caption {
+  padding: var(--space-4) var(--space-5) var(--space-5);
+}
+
+.lightbox__caption h3 {
+  font-size: var(--fs-lg);
+  margin-bottom: var(--space-2);
+}
+
+.lightbox__caption p {
+  font-size: var(--fs-sm);
+  color: var(--color-muted);
+}
+
+.lightbox__close {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
+  background: var(--color-white);
+  color: var(--color-blue);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  transition: background var(--speed) var(--ease), color var(--speed) var(--ease);
+}
+
+.lightbox__close:hover {
+  background: var(--color-blue);
+  color: var(--color-white);
+}
+
+/* Click-outside dismissal; a negative z-index here would make it unclickable. */
+.lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* 12. FORMS */
+
+.form {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.form-grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.field > label {
+  font-size: var(--fs-sm);
+  font-weight: 650;
+  color: var(--color-ink);
+}
+
+.field .hint {
+  font-size: var(--fs-xs);
+  color: var(--color-muted);
+}
+
+.field .required-mark {
+  color: var(--color-blue);
+  font-weight: 700;
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  font-size: var(--fs-sm);
+  color: var(--color-ink);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition:
+    border-color var(--speed) var(--ease),
+    box-shadow var(--speed) var(--ease),
+    background var(--speed) var(--ease);
+}
+
+.textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.select {
+  /* Chevron drawn as an inline data URI so no external icon file is needed. */
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23676b7b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 18px 18px;
+  padding-right: 2.5rem;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--color-muted);
+  opacity: 1;
+}
+
+.input:hover,
+.select:hover,
+.textarea:hover {
+  border-color: var(--color-blue-tint-strong);
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  outline: none;
+  border-color: var(--color-blue);
+  box-shadow: 0 0 0 3px var(--color-blue-tint);
+}
+
+/* --- CSS-only validation cues ----------------------------------------- */
+/* :placeholder-shown keeps an untouched field neutral until the user types. */
+
+.input:not(:placeholder-shown):valid,
+.textarea:not(:placeholder-shown):valid {
+  border-color: var(--color-success);
+}
+
+.input:not(:placeholder-shown):invalid,
+.textarea:not(:placeholder-shown):invalid {
+  border-color: var(--color-danger);
+}
+
+.input:not(:placeholder-shown):invalid:focus,
+.textarea:not(:placeholder-shown):invalid:focus {
+  box-shadow: 0 0 0 3px var(--color-danger-ring);
+}
+
+.field .error-text {
+  font-size: var(--fs-xs);
+  color: var(--color-danger);
+  display: none;
+}
+
+.field .input:not(:placeholder-shown):invalid ~ .error-text,
+.field .textarea:not(:placeholder-shown):invalid ~ .error-text {
+  display: block;
+}
+
+/* Checkbox / radio rows */
+.check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--fs-sm);
+  color: var(--color-body);
+  cursor: pointer;
+}
+
+.check input[type="checkbox"],
+.check input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  accent-color: var(--color-blue);
+  flex: none;
+  cursor: pointer;
+}
+
+.fieldset-group {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  display: grid;
+  gap: var(--space-3);
+}
+
+.fieldset-group legend {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--color-ink);
+  padding-inline: var(--space-2);
+}
+
+.form-note {
+  font-size: var(--fs-xs);
+  color: var(--color-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.form-note .icon {
+  color: var(--color-blue);
+  margin-top: 2px;
+}
+
+/* Compact inline form used in the footer */
+.inline-form {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.inline-form .input {
+  flex: 1 1 180px;
+  min-width: 0;
+}
+
+/* 13. TABLES */
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  box-shadow: var(--shadow-xs);
+}
+
+.data-table {
+  min-width: 680px;
+  font-size: var(--fs-sm);
+}
+
+.data-table caption {
+  caption-side: top;
+  text-align: left;
+  padding: var(--space-4) var(--space-5) var(--space-2);
+  font-size: var(--fs-xs);
+  color: var(--color-muted);
+}
+
+.data-table th,
+.data-table td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+.data-table thead th {
+  background: var(--color-surface);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+.data-table tbody tr:last-child th,
+.data-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.data-table tbody tr:hover {
+  background: var(--color-blue-tint);
+}
+
+.data-table tbody th {
+  font-weight: 650;
+  color: var(--color-ink);
+}
+
+/* 14. FOOTER */
+
+.site-footer {
+  background: var(--color-white);
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-8);
+  margin-top: var(--space-9);
+}
+
+.footer-top {
+  display: grid;
+  gap: var(--space-7);
+  padding-bottom: var(--space-7);
+}
+
+/* Full lockup here; at the header's 34px the tagline would render about 3px high. */
+.footer-logo {
+  display: block;
+  width: 200px;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: var(--space-4);
+}
+
+.footer-brand .brand {
+  margin-right: 0;
+  margin-bottom: var(--space-4);
+}
+
+.footer-brand p {
+  font-size: var(--fs-sm);
+  color: var(--color-muted);
+  max-width: 42ch;
+}
+
+.footer-nav-groups {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.footer-group h2 {
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-ink);
+  margin-bottom: var(--space-3);
+}
+
+.footer-group ul {
+  display: grid;
+  gap: var(--space-2);
+  /* reset.css only clears markers from ul[class], and these lists carry no class. */
+  list-style: none;
+}
+
+.footer-group a {
+  font-size: var(--fs-sm);
+  color: var(--color-muted);
+  transition: color var(--speed) var(--ease);
+  display: inline-flex;
+  gap: var(--space-2);
+
+  /* The email is one unbreakable token that widened the page. */
+  overflow-wrap: anywhere;
+
+  /* Aligns to the first line rather than the block centre once the text wraps. */
+  align-items: flex-start;
+}
+
+.footer-group a .icon {
+  margin-top: 3px;
+  flex: none;
+}
+
+.footer-group a:hover {
+  color: var(--color-blue);
+}
+
+.footer-subscribe h2 {
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-ink);
+  margin-bottom: var(--space-3);
+}
+
+.footer-subscribe p {
+  font-size: var(--fs-sm);
+  color: var(--color-muted);
+  margin-bottom: var(--space-3);
+}
+
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-block: var(--space-4) var(--space-6);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--fs-xs);
+  color: var(--color-muted);
+}
+
+.social-list {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.social-list a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  color: var(--color-muted);
+  transition:
+    background var(--speed) var(--ease),
+    color var(--speed) var(--ease),
+    border-color var(--speed) var(--ease),
+    transform var(--speed) var(--ease);
+}
+
+.social-list a:hover {
+  background: var(--color-blue);
+  border-color: var(--color-blue);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+/* 15. UTILITIES */
+
+.text-center { text-align: center; }
+.text-muted { color: var(--color-muted); }
+.mt-0 { margin-top: 0; }
+.mb-0 { margin-bottom: 0; }
+.mt-4 { margin-top: var(--space-4); }
+.mt-5 { margin-top: var(--space-5); }
+.mt-6 { margin-top: var(--space-6); }
+
+/* Page banner used at the top of every interior page. */
+/* Centred below 768px like the hero; reverts to left-aligned at 768px. */
+.page-banner {
+  background:
+    radial-gradient(ellipse 70% 80% at 100% 0%, var(--color-blue-tint) 0%, transparent 65%),
+    var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+  padding-block: var(--space-7) var(--space-7);
+  text-align: center;
+}
+
+.page-banner .breadcrumb {
+  justify-content: center;
+}
+
+.page-banner h1 {
+  margin-block: var(--space-3) var(--space-3);
+}
+
+.page-banner p {
+  color: var(--color-muted);
+  font-size: var(--fs-md);
+  max-width: 60ch;
+  margin-inline: auto;
+}
+
+/* Breadcrumb trail */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-xs);
+  color: var(--color-muted);
+}
+
+/* Padding grows the 17px hit area toward the 24px target WCAG 2.2 asks for. */
+.breadcrumb a {
+  display: inline-block;
+  padding-block: 4px;
+}
+
+.breadcrumb a:hover {
+  color: var(--color-blue);
+  text-decoration: underline;
+}
+
+.breadcrumb li:not(:last-child)::after {
+  content: "/";
+  margin-left: var(--space-2);
+  color: var(--color-border);
+}
+
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+  list-style: none;
+}
+
+/* Call-to-action band */
+.cta-band {
+  background: var(--color-blue);
+  border-radius: var(--radius-lg);
+  padding: var(--space-7) var(--space-5);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.85);
+  box-shadow: var(--shadow-brand);
+}
+
+.cta-band h2 {
+  color: var(--color-white);
+  margin-bottom: var(--space-3);
+}
+
+.cta-band p {
+  margin-inline: auto;
+  margin-bottom: var(--space-5);
+  max-width: 52ch;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.cta-band .cluster {
+  justify-content: center;
+}
+
+/* Data-model note — explains the JSON-as-schema decision in-page. */
+.data-note {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  background: var(--color-surface);
+  border: 1px dashed var(--color-blue-tint-strong);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  font-size: var(--fs-xs);
+  color: var(--color-muted);
+}
+
+.data-note .icon {
+  color: var(--color-blue);
+  margin-top: 2px;
+}
+
+.data-note strong {
+  color: var(--color-ink);
+}
+
+/* Definition list used for contact details */
+.detail-list {
+  display: grid;
+  gap: var(--space-4);
+}
+
+/* Label above value; the icon sits inside the dt because dl>div allows only dt/dd. */
+.detail-list > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.detail-list dt {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-muted);
+}
+
+.detail-list dt .icon {
+  color: var(--color-blue);
+  flex: none;
+}
+
+/* The address element should not be italic here. */
+.detail-list dd address {
+  font-style: normal;
+  line-height: var(--lh-normal);
+}
+
+/* Stacks the caveat tag under the value so it does not read as part of it. */
+.detail-list dd {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--color-ink);
+}
+
+/* Inline-link styling for these lives in section 02, as a single source of truth. */
+
+/* 16. MOTION - transform/opacity only; entrances animate FROM a displaced state. */
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Landing hero entrance: eyebrow, headline, lede, buttons and facts in sequence. */
+
+.hero__inner > *,
+.hero__facts > * {
+  animation: rise-in var(--speed-reveal) var(--ease-out) both;
+}
+
+.hero__eyebrow            { animation-delay: 40ms; }
+.hero h1                  { animation-delay: 100ms; }
+.hero__lede               { animation-delay: 170ms; }
+.hero__actions            { animation-delay: 240ms; }
+.hero__facts              { animation-delay: 310ms; }
+.hero__facts > *:nth-child(1) { animation-delay: 360ms; }
+.hero__facts > *:nth-child(2) { animation-delay: 410ms; }
+.hero__facts > *:nth-child(3) { animation-delay: 460ms; }
+
+/* Photography is desaturated here, not baked in - delete this to restore colour. */
+
+.card--media img,
+.gallery__item img,
+.feature__media img {
+  /* filter: grayscale(1) contrast(1.03); */
+  transition:
+    filter var(--speed-slow) var(--ease),
+    transform var(--speed-slow) var(--ease);
+}
+
+.card--media:hover img,
+.gallery__item:hover img,
+.feature:hover .feature__media img {
+  /* filter: grayscale(0.35) contrast(1); */
+  transform: scale(1.03);
+}
+
+/* The wrapper has to clip, or the scaled image overflows its own box. */
+.card--media,
+.gallery__item,
+.feature__media {
+  overflow: hidden;
+}
+
+/* A background-size sweep, not a pseudo-element, so it survives wrapped links. */
+
+.prose a,
+.hint a,
+.form-note a,
+.data-note a,
+.detail-list dd a,
+.accordion__panel a {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  text-decoration: none;
+  transition: background-size var(--speed) var(--ease), color var(--speed) var(--ease);
+}
+
+.prose a:hover,
+.hint a:hover,
+.form-note a:hover,
+.data-note a:hover,
+.detail-list dd a:hover,
+.accordion__panel a:hover {
+  background-size: 100% 1px;
+}
+
+/* Keyboard focus underlines immediately; the sweep is a mouse affordance. */
+.prose a:focus-visible,
+.hint a:focus-visible,
+.form-note a:focus-visible,
+.data-note a:focus-visible,
+.detail-list dd a:focus-visible,
+.accordion__panel a:focus-visible {
+  background-size: 100% 1px;
+  transition: none;
+}
+
+/* --- Navigation --------------------------------------------------------- */
+
+.nav-link {
+  position: relative;
+}
+
+/* A hairline that grows from the centre under the current or hovered link. */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  bottom: 6px;
+  height: 1.5px;
+  background: currentColor;
+  opacity: 0;
+  transition:
+    left var(--speed) var(--ease),
+    right var(--speed) var(--ease),
+    opacity var(--speed) var(--ease);
+}
+
+.nav-link:hover::after,
+.nav-link[aria-current="page"]::after {
+  left: 14px;
+  right: 14px;
+  opacity: 1;
+}
+
+/* No scroll observer without JS, so sections fade in on load. */
+
+.section-head {
+  animation: fade-in var(--speed-slow) var(--ease) both;
+}
+
+/* Movement removed outright, and entrances resolved to their final visible state. */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero__inner > *,
+  .hero__facts > *,
+  .section-head {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Hover lifts and image zooms are movement too. */
+  .btn:hover,
+  .btn-primary:hover,
+  .btn-secondary:hover,
+  .btn-inverse:hover,
+  .card:hover,
+  .arc__step:hover {
+    transform: none;
+  }
+
+  .btn:hover .icon,
+  .card--media:hover img,
+  .gallery__item:hover img,
+  .feature:hover .feature__media img {
+    transform: none;
+  }
+}
+

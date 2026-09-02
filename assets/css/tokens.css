@@ -1,0 +1,115 @@
+/* C2P Hub - design tokens. The only file to edit when retuning the look. */
+
+:root {
+  /* Ink scale. The palette is monochrome by design; --ink is the one filled colour. */
+  --color-white: #ffffff;
+  --color-ink: #000000;          /* headings, solid fills - 21:1 on white   */
+  --color-ink-soft: #1a1a1a;     /* hover step on solid fills               */
+  --color-body: #3d3d3d;         /* body copy - 11.0:1 on white (AAA)       */
+  --color-muted: #6b6b6b;        /* micro labels - 5.28:1 on white (AA)     */
+  --color-line: #e2e2e2;         /* hairlines, the main structural device   */
+  --color-line-strong: #c9c9c9;  /* hairlines inside a wash                 */
+  --color-wash: #f4f4f4;         /* sunken section ground                   */
+  --color-wash-deep: #ebebeb;    /* hover ground on light surfaces          */
+
+  /* Validation is the sole exception to monochrome, because it signals state. */
+  --color-danger: #a3231c;       /* invalid - 7.46:1 on white (AAA) */
+  --color-danger-ring: rgba(163, 35, 28, 0.14);
+  --color-success: #176b40;      /* valid - 6.53:1 on white (AA)    */
+
+  /* Semantic surfaces */
+  --surface-page: var(--color-white);
+  --surface-raised: var(--color-white);
+  --surface-sunken: var(--color-wash);
+  --surface-brand: var(--color-ink);
+
+  /* Aliases kept so older rules and any page-level CSS keep resolving. */
+  --color-blue: var(--color-ink);
+  --color-blue-hover: var(--color-ink-soft);
+  --color-blue-active: var(--color-ink);
+  --color-blue-tint: var(--color-wash);
+  --color-blue-tint-strong: var(--color-line-strong);
+  --color-border: var(--color-line);
+  --color-surface: var(--color-wash);
+
+  --font-sans:
+    "Helvetica Neue", Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-mono:
+    ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono",
+    Menlo, monospace;
+
+  /* Mobile-first editorial scale, ~1.25 ratio. Display sizes grow in responsive.css. */
+  --fs-eyebrow: 0.6875rem;  /* 11px - uppercase micro label */
+  --fs-xs: 0.8125rem;       /* 13px */
+  --fs-sm: 0.875rem;        /* 14px */
+  --fs-base: 1rem;          /* 16px */
+  --fs-md: 1.0625rem;       /* 17px */
+  --fs-lg: 1.25rem;         /* 20px */
+  --fs-xl: 1.5rem;          /* 24px */
+  --fs-2xl: 1.875rem;       /* 30px */
+  --fs-3xl: 2.375rem;       /* 38px */
+  --fs-4xl: 3rem;           /* 48px */
+  --fs-display: 3.25rem;    /* 52px - hero only */
+
+  --lh-display: 0.98;
+  --lh-tight: 1.06;
+  --lh-snug: 1.22;
+  --lh-normal: 1.65;
+  --lh-relaxed: 1.8;
+
+  --tracking-display: -0.035em;
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.1em;
+  --tracking-label: 0.16em;   /* uppercase micro labels and button text */
+
+  /* Spacing scale (4px base) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 2.5rem;
+  --space-8: 3.5rem;
+  --space-9: 4.5rem;
+  --space-10: 6rem;
+  --space-11: 7.5rem;
+
+  /* Square by default. Hairlines carry structure, so nothing is rounded or raised. */
+  --radius-btn: 0;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-pill: 999px;      /* retained for genuinely circular elements */
+
+  --border-hair: 1px solid var(--color-line);
+  --border-rule: 1px solid var(--color-ink);
+
+  /* Elevation is deliberately absent; these resolve to nothing on purpose. */
+  --shadow-xs: none;
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-brand: none;
+
+  /* Motion is restrained: transform and opacity only. */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --speed-fast: 120ms;
+  --speed: 200ms;
+  --speed-slow: 320ms;
+  --speed-reveal: 620ms;
+  --lift: -2px;
+
+  /* Layout */
+  --container-max: 1180px;
+  --container-narrow: 720px;
+  --gutter: var(--space-5);
+  --header-height: 72px;
+
+  --focus-ring: 2px solid var(--color-ink);
+  --focus-offset: 3px;
+}

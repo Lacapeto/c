@@ -1,0 +1,149 @@
+{
+  "$comment": "Canonical model for Programs. Not fetched at runtime (no JavaScript); programs.html mirrors these records as static HTML. All seven are the hub's real offerings.",
+  "entity": "program",
+  "schema_version": "1.0.0",
+  "last_updated": "2026-08-13",
+  "record_count": 7,
+  "fields": {
+    "id": "string (required, unique) — stable slug-style key, prefix 'prog-'.",
+    "name": "string (required) — display name of the program.",
+    "icon": "string (required) — key naming the hand-written inline SVG icon used for this program.",
+    "tagline": "string (required) — one-line positioning statement, max ~60 chars, used as the card subtitle.",
+    "description": "string (required) — two to three sentences of concrete detail.",
+    "format": "string (required) — how the program is delivered.",
+    "cadence": "string (required) — how often it runs.",
+    "duration": "string (required) — typical length of one instance.",
+    "capacity": "string (required) — intake size per instance. 'Open' where there is no cap.",
+    "entry_requirement": "string (required) — what a member needs before joining.",
+    "outcomes": "array of string (required, 2-4 items) — what a participant leaves with.",
+    "is_placeholder": "boolean (required) — false for all seven programs; these are the hub's actual published offerings."
+  },
+  "programs": [
+    {
+      "id": "prog-bootcamps",
+      "name": "Bootcamps",
+      "icon": "bolt",
+      "tagline": "Short, intensive skills sprints",
+      "description": "Focused sprints that take a member from nothing to working code in one stack — embedded C, Python for data work, or web fundamentals. Each bootcamp is taught by a senior member or staff mentor and runs in the evenings so it does not collide with lectures. Participants close the bootcamp by building and defending a small working project rather than sitting a written test.",
+      "format": "In-person, evening sessions",
+      "cadence": "Twice per semester",
+      "duration": "3 weeks",
+      "capacity": "40 members per bootcamp",
+      "entry_requirement": "Open to all levels; no prior experience assumed for the introductory tracks",
+      "outcomes": [
+        "A working project built and defended in front of peers",
+        "Working fluency in one stack",
+        "A place on the shortlist for the next incubation cohort"
+      ],
+      "is_placeholder": false
+    },
+    {
+      "id": "prog-hackathons",
+      "name": "Hackathons",
+      "icon": "trophy",
+      "tagline": "Build something real against the clock",
+      "description": "Time-boxed build sprints run against a problem brief drawn from campus life or the surrounding community. Teams of three to five have 48 hours to move from a blank repository to a prototype they can demonstrate. Work is judged by a mixed panel of departmental staff and visiting industry engineers, and the strongest teams are fast-tracked into incubation.",
+      "format": "Team-based, 48-hour on-site sprint",
+      "cadence": "Once per semester",
+      "duration": "48 hours",
+      "capacity": "12 teams (60 members)",
+      "entry_requirement": "Teams of 3-5; at least one member who can build and ship the demo",
+      "outcomes": [
+        "A demonstrable prototype and a public pitch",
+        "Feedback from an industry judging panel",
+        "Fast-track consideration for an incubation place"
+      ],
+      "is_placeholder": false
+    },
+    {
+      "id": "prog-incubation",
+      "name": "Incubation Cohorts",
+      "icon": "rocket",
+      "tagline": "Structure for an idea that already works",
+      "description": "For teams that have validated an idea and now need structure to take it further. Across a full semester each team is given bench space in the hub, a technical mentor, and fortnightly milestone reviews that they must pass to stay in the cohort. Teams leave with a working prototype, documentation, and a defensible plan for what comes after the cohort.",
+      "format": "Semester-long, mentor-led, milestone-gated",
+      "cadence": "One cohort per academic session",
+      "duration": "16 weeks",
+      "capacity": "8 teams per cohort",
+      "entry_requirement": "A validated concept, a committed team, and a completed hub project or hackathon entry",
+      "outcomes": [
+        "A working prototype and technical documentation",
+        "A milestone record and a post-cohort roadmap",
+        "A Demo Day slot in front of staff and industry guests"
+      ],
+      "is_placeholder": false
+    },
+    {
+      "id": "prog-coding-sessions",
+      "name": "Weekly Coding Sessions",
+      "icon": "terminal",
+      "tagline": "The hub's regular heartbeat",
+      "description": "An open, drop-in evening that runs every week the university is in session. Members work through problem sets, pair on side projects, and get unblocked by whoever in the room has already solved that problem. There is no registration and no prerequisite beyond turning up — this is the easiest first contact a new member has with the hub.",
+      "format": "Open drop-in, peer-led",
+      "cadence": "Every Thursday during semester",
+      "duration": "2 hours per session",
+      "capacity": "Open — no cap",
+      "entry_requirement": "None. Bring a laptop if you have one; machines are shared if you do not",
+      "outcomes": [
+        "Consistent practice and a habit of shipping",
+        "Direct access to senior members and mentors",
+        "The usual route into bootcamps and project teams"
+      ],
+      "is_placeholder": false
+    },
+    {
+      "id": "prog-research",
+      "name": "Research Clusters",
+      "icon": "microscope",
+      "tagline": "Standing groups on an open question",
+      "description": "Small standing groups that work alongside departmental academic staff on a defined research question, currently spanning computer vision, embedded systems, and networks. A cluster meets weekly, maintains a shared reading list, and is expected to produce something citable. Output is aimed at conference papers, strong final-year projects, and national competition entries.",
+      "format": "Staff-supervised research group",
+      "cadence": "Weekly, ongoing across the session",
+      "duration": "Continuous membership",
+      "capacity": "4-6 members per cluster",
+      "entry_requirement": "300 level and above, with a demonstrated interest in the cluster's area",
+      "outcomes": [
+        "A conference paper or publishable technical report",
+        "A supervised final-year project topic",
+        "Competition-ready research work"
+      ],
+      "is_placeholder": false
+    },
+    {
+      "id": "prog-mentorship",
+      "name": "Mentorship Tracks",
+      "icon": "users",
+      "tagline": "Paired guidance, not ad-hoc advice",
+      "description": "Junior members are paired with senior students and with alumni now working in industry. Each pairing sets its own goals at the start of the semester, meets at least fortnightly, and is formally reviewed at the halfway point so that a pairing which is not working can be changed rather than quietly abandoned. Mentors are briefed and matched by focus area, not assigned at random.",
+      "format": "One-to-one pairing, reviewed at mid-semester",
+      "cadence": "Fortnightly meetings",
+      "duration": "One semester per pairing",
+      "capacity": "Matched to available mentors each semester",
+      "entry_requirement": "Active hub membership and a stated focus area to be matched on",
+      "outcomes": [
+        "A semester of structured, goal-based guidance",
+        "An industry or senior-student contact beyond the hub",
+        "A reviewed record of progress against agreed goals"
+      ],
+      "is_placeholder": false
+    },
+    {
+      "id": "prog-siwes",
+      "name": "SIWES Placement",
+      "icon": "briefcase",
+      "tagline": "Support through the industrial placement",
+      "description": "Practical support for the mandatory Students' Industrial Work Experience Scheme. The hub runs technical readiness sessions before placement season, helps members assemble a portfolio that shows real work rather than coursework, and connects them to partner firms who have taken hub members before. Members are also debriefed on return so the next intake gets better guidance.",
+      "format": "Readiness sessions plus placement matching",
+      "cadence": "Annually, ahead of the SIWES window",
+      "duration": "24-week placement",
+      "capacity": "Matched to available partner placements",
+      "entry_requirement": "Students entering their SIWES year, with at least one completed hub project",
+      "outcomes": [
+        "A portfolio built on real, demonstrable project work",
+        "An introduction to a partner firm",
+        "A technical readiness review before the placement starts"
+      ],
+      "is_placeholder": false
+    }
+  ]
+}

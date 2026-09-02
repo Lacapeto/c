@@ -1,0 +1,389 @@
+/* C2P Hub - responsive.css. Every rule sits in a min-width query and only adds. */
+
+/* 480px - LARGE PHONES */
+
+@media screen and (min-width: 480px) {
+  :root {
+    --gutter: var(--space-5);
+    --fs-3xl: 2.75rem;
+    --fs-4xl: 3.5rem;
+    --fs-display: 4rem;
+  }
+
+  .hero__media img { height: 320px; }
+
+  .grid--2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .event {
+    grid-template-columns: auto 1fr;
+    align-items: start;
+  }
+
+  .footer-bottom {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* 768px - TABLETS */
+
+@media screen and (min-width: 768px) {
+  :root {
+    --gutter: var(--space-6);
+    --header-height: 76px;
+    --fs-lg: 1.3125rem;
+    --fs-xl: 1.625rem;
+    --fs-2xl: 2rem;
+    --fs-3xl: 2.75rem;
+    --fs-4xl: 3.5rem;
+  }
+
+  .section { padding-block: var(--space-9); }
+  .section--tight { padding-block: var(--space-8); }
+  .section--loose { padding-block: var(--space-10); }
+
+  /* Still the checkbox menu here, but the links can lay out in columns. */
+  .nav-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-1) var(--space-2);
+    padding-block: var(--space-4) var(--space-5);
+  }
+
+  /* Photograph right, copy over its cleared left edge. */
+  .hero {
+    padding-block: 0;
+  }
+
+  .hero__inner {
+    padding-block: var(--space-10) var(--space-9);
+    min-height: 30rem;
+  }
+
+  .hero__media {
+    position: absolute;
+    inset: 0 0 0 auto;
+    width: 78%;
+    margin: 0;
+  }
+
+  .hero h1 {
+    font-size: var(--fs-display);
+  }
+
+  .hero__lede {
+    font-size: var(--fs-lg);
+  }
+
+  .hero__media img {
+    height: 100%;
+    object-position: center 40%;
+  }
+
+  /* One wash clears the left column, one lands the photo on the page. */
+  .hero__media::after {
+    background:
+      linear-gradient(
+        to right,
+        var(--color-white) 0%,
+        var(--color-white) 22%,
+        rgba(255, 255, 255, 0.55) 52%,
+        rgba(255, 255, 255, 0) 78%
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(255, 255, 255, 0.9) 88%,
+        var(--color-white) 100%
+      );
+  }
+
+  .hero__facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-6);
+    border-top: 1px solid var(--color-line);
+  }
+
+  /* --- Grids ----------------------------------------------------------- */
+
+  .grid--2,
+  .grid--3,
+  .grid--4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid {
+    gap: var(--space-5);
+  }
+
+  .arc {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stat-block {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+
+  /* --- Split layouts --------------------------------------------------- */
+
+  .feature {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: var(--space-6);
+    gap: var(--space-7);
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-7);
+    align-items: center;
+  }
+
+  .split--sidebar {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  /* --- Forms ----------------------------------------------------------- */
+
+  .form-grid--2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .field--full {
+    grid-column: 1 / -1;
+  }
+
+  /* --- Footer ---------------------------------------------------------- */
+
+  .footer-top {
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 2fr);
+    gap: var(--space-8);
+  }
+
+  .footer-nav-groups {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  /* Wide enough for a left-aligned heading to read as anchored, not adrift. */
+  .page-banner {
+    padding-block: var(--space-8) var(--space-8);
+    text-align: left;
+  }
+
+  .page-banner .breadcrumb {
+    justify-content: flex-start;
+  }
+
+  .page-banner p {
+    margin-inline: 0;
+  }
+
+  .cta-band {
+    padding: var(--space-9) var(--space-7);
+  }
+}
+
+/* 1024px - LAPTOPS */
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --fs-2xl: 2.5rem;
+    --fs-3xl: 3.25rem;
+    --fs-4xl: 4rem;
+    --fs-display: 5.5rem;
+  }
+
+  .hero__inner { min-height: 34rem; }
+
+  .grid--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .grid--4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .arc {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  /* Connector line running through the concept -> production steps. */
+  .arc {
+    position: relative;
+  }
+
+  .arc::before {
+    content: "";
+    position: absolute;
+    top: 46px;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-blue-tint-strong) 12%,
+      var(--color-blue-tint-strong) 88%,
+      transparent
+    );
+    z-index: 0;
+  }
+
+  .arc__step {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Navigation switches from the checkbox panel to a permanent horizontal bar. */
+
+  .nav-toggle-label {
+    display: none;
+  }
+
+  .site-nav {
+    position: static;
+    display: block;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    margin-inline: auto;
+  }
+
+  .nav-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    gap: var(--space-1);
+  }
+
+  .nav-link {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--fs-xs);
+    white-space: nowrap;
+  }
+
+  /* Underline marker for the current page, in addition to the tint. */
+  .nav-link[aria-current="page"] {
+    background: var(--color-blue-tint);
+    box-shadow: inset 0 -2px 0 var(--color-blue);
+  }
+
+  .brand {
+    margin-right: var(--space-4);
+  }
+
+  .feature {
+    padding: var(--space-7);
+    gap: var(--space-8);
+  }
+
+  .cta-band {
+    padding: var(--space-10) var(--space-8);
+  }
+
+  .site-footer {
+    padding-top: var(--space-9);
+  }
+
+  .footer-top {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 2fr) minmax(0, 1.1fr);
+  }
+}
+
+/* 1280px - LARGE DESKTOPS */
+
+@media screen and (min-width: 1280px) {
+  :root {
+    --gutter: var(--space-6);
+    --fs-4xl: 4.25rem;
+    --fs-display: 6rem;
+  }
+
+  /* Only here is there room for the nav bar and a header button on one row. */
+  .header-cta {
+    display: inline-flex;
+    white-space: nowrap;
+    padding: 0.85rem 1.35rem;
+  }
+
+  .nav-link {
+    font-size: var(--fs-sm);
+  }
+
+  .hero__inner {
+    min-height: 38rem;
+  }
+
+  .section--loose {
+    padding-block: var(--space-11);
+  }
+}
+
+/* PRINT - strips navigation chrome and interactive affordances. */
+
+@media print {
+  .site-header,
+  .site-footer,
+  .nav-toggle-label,
+  .cta-band,
+  .lightbox,
+  .btn {
+    display: none !important;
+  }
+
+  body {
+    color: #000;
+    background: #fff;
+  }
+
+  /* Entrances start at opacity 0; without this the hero prints blank. */
+  .hero__inner > *,
+  .hero__facts > *,
+  .section-head {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Photography prints untouched; some engines rasterise the grayscale filter poorly. */
+  .hero__media img,
+  .card--media img,
+  .gallery__item img,
+  .feature__media img {
+    filter: none !important;
+  }
+
+  .card,
+  .student-card,
+  .event,
+  .feature {
+    box-shadow: none;
+    border: 1px solid #999;
+    break-inside: avoid;
+  }
+
+  .accordion__panel {
+    display: block !important;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.75em;
+    color: #444;
+  }
+}

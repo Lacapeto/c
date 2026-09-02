@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Projects | C2P Tech Hub  Concept to Production</title>
+  <meta name="description" content="Projects built by students at C2P Tech Hub, led by ParaVision, an AI diagnostic tool that won the innovation track of the Huawei ICT Competition.">
+  <meta name="author" content="C2P Tech Hub, Department of Computer Engineering, Ahmadu Bello University, Zaria">
+  <meta name="theme-color" content="#111111">
+  <link rel="icon" href="assets/images/brand/c2p-mark-mono.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <!-- Declarative ld+json data island, not executable code. -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "ParaVision",
+      "url": "https://c2phub.com/projects.html#proj-paravision",
+      "dateCreated": "2026-03-21",
+      "genre": "Artificial Intelligence",
+      "description": "An AI-based diagnostic tool using a computer vision model that detects malaria from blood sample images and intestinal parasites from stool sample images. Winner of the innovation track of the Huawei ICT Competition.",
+      "image": "https://c2phub.com/assets/images/photos/huawei-ict-global-final.jpg",
+      "keywords": ["Computer Vision", "Medical Imaging", "Deep Learning", "Python"],
+      "creativeWorkStatus": "Award winner",
+      "award": "Winner, Innovation Track, Huawei ICT Competition",
+      "creator": { "@type": "Organization", "name": "C2P Tech Hub student team" },
+      "producer": { "@type": "EducationalOrganization", "name": "C2P Tech Hub" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "HausaSpeech",
+      "url": "https://c2phub.com/projects.html",
+      "dateCreated": "2026-05-09",
+      "genre": "Artificial Intelligence",
+      "description": "Placeholder record. An open speech corpus and speech-to-text model for Hausa, assembled from volunteer recordings collected around campus.",
+      "keywords": ["Machine Learning", "Speech Recognition", "Dataset", "Python"],
+      "creativeWorkStatus": "In development",
+      "producer": { "@type": "EducationalOrganization", "name": "C2P Tech Hub" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "PowerPulse",
+      "url": "https://c2phub.com/projects.html",
+      "dateCreated": "2026-04-02",
+      "genre": "Embedded Systems",
+      "description": "Placeholder record. A low-cost energy monitoring node for hostel blocks, built on an ESP32 with a current transformer clamp on the incoming line.",
+      "keywords": ["ESP32", "Embedded C", "Sensors", "Energy"],
+      "creativeWorkStatus": "Prototype",
+      "producer": { "@type": "EducationalOrganization", "name": "C2P Tech Hub" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "AgriSense",
+      "url": "https://c2phub.com/projects.html",
+      "dateCreated": "2026-06-18",
+      "genre": "IoT and Mobile",
+      "description": "Placeholder record. A soil moisture and temperature sensing network for smallholder farmland around Samaru, reporting over LoRa to a single gateway.",
+      "keywords": ["IoT", "LoRa", "Sensors", "Agriculture"],
+      "creativeWorkStatus": "Prototype",
+      "producer": { "@type": "EducationalOrganization", "name": "C2P Tech Hub" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "SafeRoute ABU",
+      "url": "https://c2phub.com/projects.html",
+      "dateCreated": "2026-07-04",
+      "genre": "IoT and Mobile",
+      "description": "Placeholder record. An Android application that tracks the campus shuttle fleet and gives waiting students a live arrival estimate.",
+      "keywords": ["Android", "Kotlin", "GPS", "Mobile"],
+      "creativeWorkStatus": "In development",
+      "producer": { "@type": "EducationalOrganization", "name": "C2P Tech Hub" }
+    }
+  ]
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- Shared header / navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a class="brand" href="index.html">
+        <img class="brand-mark" src="assets/images/brand/c2p-mark-mono.png"
+             alt="C2P Tech Hub logo mark" width="320" height="169">
+        <span class="brand-text">
+          <span class="brand-name">C2P Tech Hub</span>
+          <span class="brand-tagline">Concept to Production</span>
+        </span>
+      </a>
+
+      <input class="nav-toggle" type="checkbox" id="nav-toggle">
+      <label class="nav-toggle-label" for="nav-toggle">
+        <svg class="icon icon-open" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M4 7h16M4 12h16M4 17h16"/>
+        </svg>
+        <svg class="icon icon-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M6 6l12 12M18 6L6 18"/>
+        </svg>
+        <span class="sr-only">Show or hide the main menu</span>
+      </label>
+
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+          <li><a class="nav-link" href="programs.html">Programs</a></li>
+          <li><a class="nav-link" href="projects.html" aria-current="page">Projects</a></li>
+          <li><a class="nav-link" href="directory.html">Directory</a></li>
+          <li><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li><a class="nav-link" href="events.html">Events</a></li>
+          <li><a class="nav-link" href="join.html">Join</a></li>
+          <li><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn-primary header-cta" href="join.html">
+        Join the Hub
+        <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M5 12h14M13 6l6 6-6 6"/>
+        </svg>
+      </a>
+
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Page banner -->
+    <section class="page-banner" aria-labelledby="page-title">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li aria-current="page">Projects</li>
+          </ol>
+        </nav>
+        <h1 id="page-title">Student Projects</h1>
+        <p>
+          What members have actually built. One national title so far, and four
+          teams currently working toward the next one.
+        </p>
+      </div>
+    </section>
+
+    <!-- Flagship: paravision -->
+    <!-- Mirrors data/projects.json -> projects[id="proj-paravision"] -->
+    <section class="section section--tinted" aria-labelledby="paravision-title">
+      <div class="container">
+
+        <article class="feature" id="proj-paravision">
+
+          <figure class="feature__media">
+            <img loading="lazy" decoding="async" src="assets/images/photos/huawei-ict-global-final.jpg"
+                 alt="The ParaVision team demonstrating their diagnostic tool on a laptop beside a microscope, with a blood sample image classified on screen"
+                 width="1000" height="625">
+          </figure>
+
+          <div class="feature__body">
+            <p class="eyebrow">Flagship project</p>
+            <h2 id="paravision-title">ParaVision</h2>
+
+            <p>
+              An AI-based diagnostic tool built around a computer vision model
+              trained to identify parasites in microscope imagery. ParaVision detects
+              malaria from blood sample images and intestinal parasites from stool
+              sample images, returning a classification the operator can review
+              rather than a bare yes-or-no answer.
+            </p>
+
+            <ul class="feature__list">
+              <li>
+                <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/>
+                </svg>
+                <span>Two diagnostic paths from one model family: blood samples for malaria, stool samples for intestinal parasites.</span>
+              </li>
+              <li>
+                <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/>
+                </svg>
+                <span>Built by students mentored at the hub, not by staff on their behalf.</span>
+              </li>
+              <li>
+                <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/>
+                </svg>
+                <span><strong>Winner of the innovation track at the Huawei ICT Competition.</strong></span>
+              </li>
+            </ul>
+
+            <dl class="spec-list">
+              <div><dt>Status</dt><dd>Award winner</dd></div>
+              <div><dt>Category</dt><dd>Artificial Intelligence  computer vision</dd></div>
+              <div><dt>Milestone</dt><dd>21 March 2026, Huawei ICT Competition national finals</dd></div>
+              <div><dt>Team</dt><dd>C2P Tech Hub student team  individual names to be confirmed</dd></div>
+            </dl>
+
+            <div class="cluster mt-5">
+              <span class="tag tag--solid">Award winner</span>
+              <span class="tag">Computer Vision</span>
+              <span class="tag">Medical Imaging</span>
+              <span class="tag">Deep Learning</span>
+              <span class="tag">Python</span>
+            </div>
+          </div>
+
+        </article>
+
+      </div>
+    </section>
+
+    <!-- All projects (tabs) -->
+    <section class="section" aria-labelledby="all-projects-title">
+      <div class="container">
+
+        <div class="section-head">
+          <p class="eyebrow">The full list</p>
+          <h2 id="all-projects-title">Every project, by category</h2>
+          <p>Use the filter to narrow by technical area.</p>
+        </div>
+
+        <!-- Mirrors data/projects.json; edit the JSON first. -->
+
+        <!-- <p class="data-note">
+          <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <ellipse cx="12" cy="6" rx="8" ry="3"/>
+            <path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/>
+            <path d="M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>
+          </svg>
+          <span>
+            <strong>Content model:</strong> these records come from
+            <code>data/projects.json</code>. Four of the five are marked
+            <code>is_placeholder: true</code> and are flagged below  swap them
+            for real projects before publishing.
+          </span>
+        </p> -->
+
+        <!-- CSS-only 3 of 4: radio inputs drive tabbed filtering. -->
+        <fieldset class="tabs mt-6">
+          <legend class="sr-only">Filter projects by technical category</legend>
+
+          <input class="tabs__radio" type="radio" name="project-filter" id="tab-all" checked>
+          <input class="tabs__radio" type="radio" name="project-filter" id="tab-ai">
+          <input class="tabs__radio" type="radio" name="project-filter" id="tab-embedded">
+          <input class="tabs__radio" type="radio" name="project-filter" id="tab-iot">
+
+          <div class="tabs__list">
+            <label class="tabs__tab" for="tab-all">All projects <span aria-hidden="true">(5)</span></label>
+            <label class="tabs__tab" for="tab-ai">AI &amp; Vision <span aria-hidden="true">(2)</span></label>
+            <label class="tabs__tab" for="tab-embedded">Embedded <span aria-hidden="true">(1)</span></label>
+            <label class="tabs__tab" for="tab-iot">IoT &amp; Mobile <span aria-hidden="true">(2)</span></label>
+          </div>
+
+          <div class="tabs__panels">
+
+            <!-- ---------------------------- ALL ---------------------------- -->
+            <div class="tabs__panel" id="panel-all">
+              <h3 class="sr-only">All projects</h3>
+              <div class="grid grid--3">
+
+                <article class="card card--media">
+                  <img loading="lazy" decoding="async" src="assets/images/photos/huawei-ict-global-final.jpg"
+                       alt="The ParaVision team demonstrating their diagnostic tool beside a microscope"
+                       width="1000" height="625">
+                  <div class="card__body">
+                    <h4>ParaVision</h4>
+                    <p>AI parasite detection from blood and stool sample imagery. Winner of the Huawei ICT Competition innovation track.</p>
+                    <p class="card__meta">
+                      <span class="tag tag--solid">Award winner</span>
+                      <span class="tag tag--quiet">Artificial Intelligence</span>
+                      <span class="tag tag--quiet">Mar 2026</span>
+                    </p>
+                  </div>
+                </article>
+
+                <article class="card card--media card--">
+		  <img loading="lazy" decoding="async" src="assets/images/photos/hausa-to-text.jpg"
+                       alt="The ParaVision team demonstrating their diagnostic tool beside a microscope"
+                       width="1000" height="625">
+                  <div class="card__body">
+                    <h4>HausaSpeech</h4>
+                    <p>An open speech corpus and speech-to-text model for Hausa, built from volunteer recordings collected around campus.</p>
+                    <p class="card__meta">
+                      <span class="tag tag--quiet">In development</span>
+			<span class="tag tag--quiet">AI & Vision</span>
+                      <span class="tag tag--quiet">May 2026</span>
+                    </p>
+                  </div>
+                </article>
+
+                <article class="card card--media card">
+		  <img loading="lazy" decoding="async" src="assets/images/photos/powerpulse.jpg"
+                       alt="The ParaVision team demonstrating their diagnostic tool beside a microscope"
+                       width="1000" height="625">
+                  <div class="card__body">
+                    <h4>PowerPulse</h4>
+                    <p>A low-cost energy monitoring node for hostel blocks, tracing consumption spikes to a floor rather than guessing at them.</p>
+                    <p class="card__meta">
+                      <span class="tag tag--quiet">Prototype</span>
+			<span class="tag tag--quiet">embedded</span>
+                      <span class="tag tag--quiet">Apr 2026</span>
+                    </p>
+                  </div>
+                </article>
+
+                <article class="card card--media card">
+		  <img loading="lazy" decoding="async" src="assets/images/photos/agricsense.jpg"
+                       alt="The ParaVision team demonstrating their diagnostic tool beside a microscope"
+                       width="1000" height="625">
+                  <div class="card__body">
+                    <h4>AgriSense</h4>
+                    <p>Soil moisture and temperature sensing over LoRa for smallholder farmland with no mains power and no reliable cellular coverage.</p>
+                    <p class="card__meta">
+                      <span class="tag tag--quiet">Prototype</span>
+			<span class="tag tag--quiet">IoT and Mobile</span>
+                      <span class="tag tag--quiet">Jun 2026</span>
+                    </p>
+                  </div>
+                </article>
+
+                <article class="card card--media card">
+		  <img loading="lazy" decoding="async" src="assets/images/photos/saferoute.jpg"
+                       alt="The ParaVision team demonstrating their diagnostic tool beside a microscope"
+                       width="1000" height="625">
+                  <div class="card__body">
+                    <h4>SafeRoute ABU</h4>
+                    <p>Live campus shuttle tracking on Android, degrading to the last known position when the network drops.</p>
+                    <p class="card__meta">
+                      <span class="tag tag--quiet">In development</span>
+			<span class="tag tag--quiet">IoT and Mobile</span>
+                      <span class="tag tag--quiet">Jul 2026</span>
+                    </p>
+                  </div>
+                </article>
+
+              </div>
+            </div>
+
+            <!-- ------------------------- AI & VISION ------------------------- -->
+            <div class="tabs__panel" id="panel-ai">
+              <h3 class="sr-only">Artificial intelligence and computer vision projects</h3>
+              <div class="grid grid--3">
+
+                <article class="card card--media">
+                  <img loading="lazy" decoding="async" src="assets/images/photos/hub-lab-workstations.jpg"
+                       alt="The ParaVision team demonstrating their diagnostic tool beside a microscope"
+                       width="1000" height="625">
+                  <div class="card__body">
+                    <h4>ParaVision</h4>
+                    <p>AI parasite detection from blood and stool sample imagery. Winner of the Huawei ICT Competition innovation track.</p>
+                    <p class="card__meta">
+                      <span class="tag tag--solid">Award winner</span>
+                      <span class="tag tag--quiet">Computer Vision</span>
+                    </p>
+                  </div>
+                </article>
+              
+		<article class="card card--media card--">
+                  <img loading="lazy" decoding="async" src="assets/images/photos/hausa-to-text.jpg"
+                       alt=""
+                       width="1000" height="625">
+                  <div class="card__body">
+                    <h4>HausaSpeech</h4>
+                    <p>An open speech corpus and speech-to-text model for Hausa, built from volunteer recordings collected around campus.</p>
+                    <p class="card__meta">
+                      <span class="tag tag--quiet">In development</span>
+                      <span class="tag tag--quiet">Speech Recognition</span>
+                    </p>
+                  </div>
+                </article>
+
+              </div>
+            </div>
+
+            <!-- -------------------------- EMBEDDED -------------------------- -->
+            <div class="tabs__panel" id="panel-embedded">
+              <h3 class="sr-only">Embedded systems projects</h3>
+              <div class="grid grid--3">
+		 <article class="card card--media card">
+                  <img loading="lazy" decoding="async" src="assets/images/photos/powerpulse.jpg"
+                       alt=""
+                       width="1000" height="625">
+                  <div class="card__body">
+                    <h4>PowerPulse</h4>
+                    <p>A low-cost energy monitoring node for hostel blocks, tracing consumption spikes to a floor rather than guessing at them.</p>
+                    <p class="card__meta">
+                      <span class="tag tag--quiet">Prototype</span>
+                      <span class="tag tag--quiet">Embedded</span>
+                    </p>
+                  </div>
+                </article>
+
+              </div>
+            </div>
+
+            <!-- ------------------------ IOT & MOBILE ------------------------ -->
+            <div class="tabs__panel" id="panel-iot">
+              <h3 class="sr-only">Internet of things and mobile projects</h3>
+              <div class="grid grid--3">
+
+		 <article class="card card--media card">
+                  <img loading="lazy" decoding="async" src="assets/images/photos/agricsense.jpg"
+                       alt="The ParaVision team demonstrating their diagnostic tool beside a microscope"
+                       width="1000" height="625">
+                  <div class="card__body">
+                    <h4>AgriSense</h4>
+                    <p>Soil moisture and temperature sensing over LoRa for smallholder farmland with no mains power and no reliable cellular coverage.</p>
+                    <p class="card__meta">
+                      <span class="tag tag--quiet">Prototype</span>
+                      <span class="tag tag--quiet">LoRa</span>
+                    </p>
+                  </div>
+                </article>
+
+                </article>
+		    <article class="card card--media card">
+                  <img loading="lazy" decoding="async" src="assets/images/photos/saferoute.jpg"
+                       alt="The ParaVision team demonstrating their diagnostic tool beside a microscope"
+                       width="1000" height="625">
+                  <div class="card__body">
+                    <h4>SafeRoute ABU</h4>
+                    <p>Live campus shuttle tracking on Android, degrading to the last known position when the network drops.</p>
+                    <p class="card__meta">
+                      <span class="tag tag--quiet">In development</span>
+                      <span class="tag tag--quiet">Kotlin</span>
+                    </p>
+                  </div>
+                </article>
+
+              </div>
+            </div>
+
+          </div>
+        </fieldset>
+
+      </div>
+    </section>
+
+    <!-- Cta band -->
+    <section class="section section--sunken" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta-band">
+          <h2 id="cta-title">Your project could be the next one here.</h2>
+          <p>
+            Every project on this page started as somebody&rsquo;s half-formed idea at
+            a Thursday session. Bring yours.
+          </p>
+          <p class="cluster">
+            <a class="btn btn-inverse btn--lg" href="join.html">Join the Hub</a>
+            <a class="btn btn-outline-inverse btn--lg" href="programs.html">See the programs</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Shared footer -->
+  <footer class="site-footer">
+    <div class="container">
+
+      <div class="footer-top">
+
+        <div class="footer-brand">
+          <a href="index.html">
+            <img class="footer-logo" src="assets/images/brand/c2p-logo-mono.png"
+                 alt="C2P Tech Hub  Rooted in knowledge, Branching into Innovation"
+                 width="900" height="405">
+          </a>
+          <p>
+            An innovation, incubation, coding and research hub in the Department
+            of Computer Engineering, Ahmadu Bello University, Zaria  where
+            ideas are taken from concept all the way to production.
+          </p>
+        </div>
+
+        <div class="footer-nav-groups">
+
+          <div class="footer-group">
+            <h2>Explore</h2>
+            <ul>
+              <li><a href="about.html">About the Hub</a></li>
+              <li><a href="programs.html">Innovation Programs</a></li>
+              <li><a href="projects.html">Student Projects</a></li>
+              <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-group">
+            <h2>Community</h2>
+            <ul>
+              <li><a href="directory.html">Student Directory</a></li>
+              <li><a href="events.html">Events</a></li>
+              <li><a href="join.html">Join the Hub</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-group">
+            <h2>Reach Us</h2>
+            <ul>
+              <li>
+                <a href="mailto:admin@c2phub.com">
+                  <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <rect x="3" y="5" width="18" height="14" rx="2"/>
+                    <path d="M3 7l9 6 9-6"/>
+                  </svg>
+                  admin@c2phub.com
+                </a>
+              </li>
+              <li>
+                <a href="tel:+2348000000000">
+                  <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M6.5 3h3l1.5 5-2 1.5a12 12 0 0 0 5.5 5.5L16 13l5 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4 6.2 2 2 0 0 1 6.5 3z"/>
+                  </svg>
+                  +234 800 000 0000
+                </a>
+              </li>
+              <li>
+                <a href="contact.html">
+                  <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/>
+                    <circle cx="12" cy="10" r="2.5"/>
+                  </svg>
+                  Gound Floor, Computer Engineering
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="footer-subscribe">
+          <h2>Stay Updated</h2>
+          <p>Bootcamp dates, hackathon calls and cohort openings, straight to your inbox.</p>
+          <form class="inline-form" action="mailto:admin@c2phub.com" method="post"
+                enctype="text/plain" aria-label="Subscribe to C2P Tech Hub updates">
+            <label class="sr-only" for="footer-email">Your email address</label>
+            <input class="input" type="email" id="footer-email" name="subscriber_email"
+                   placeholder="you@example.com" required>
+            <button class="btn btn-primary" type="submit">Subscribe</button>
+          </form>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 C2P Tech Hub, Department of Computer Engineering, Ahmadu Bello University, Zaria. All rights reserved.</p>
+
+        <ul class="social-list">
+          <li>
+            <a href="https://x.com/c2ptechhub" title="C2P Tech Hub on X">
+              <span class="sr-only">C2P Tech Hub on X (placeholder handle)</span>
+              <svg class="icon icon--sm icon--filled" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M17.5 3h3.1l-6.8 7.8L21.8 21h-6.2l-4.9-6.3L5.1 21H2l7.3-8.3L2.4 3h6.4l4.4 5.8L17.5 3zm-1.1 16.1h1.7L7.7 4.8H5.9l10.5 14.3z"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://instagram.com/c2ptechhub" title="C2P Tech Hub on Instagram">
+              <span class="sr-only">C2P Tech Hub on Instagram (placeholder handle)</span>
+              <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <rect x="3" y="3" width="18" height="18" rx="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://linkedin.com/company/c2p-tech-hub" title="C2P Tech Hub on LinkedIn">
+              <span class="sr-only">C2P Tech Hub on LinkedIn (placeholder handle)</span>
+              <svg class="icon icon--sm icon--filled" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.76V21h-4v-5.6c0-1.34-.03-3.06-1.9-3.06-1.9 0-2.2 1.45-2.2 2.96V21h-4V9z"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://wa.me/2348000000000" title="C2P Tech Hub on WhatsApp">
+              <span class="sr-only">C2P Tech Hub on WhatsApp (placeholder number)</span>
+              <svg class="icon icon--sm icon--filled" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 2a10 10 0 0 0-8.6 15.05L2 22l5.1-1.33A10 10 0 1 0 12 2zm0 1.9a8.1 8.1 0 1 1-4.13 15.07l-.3-.18-3.02.79.8-2.94-.19-.31A8.1 8.1 0 0 1 12 3.9zm-3.1 4.1c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02s.87 2.34 1 2.5c.12.16 1.7 2.7 4.17 3.68 2.06.81 2.48.65 2.93.61.45-.04 1.45-.59 1.65-1.17.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28-.24-.12-1.45-.71-1.67-.79-.22-.08-.39-.12-.55.12-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06-.24-.12-1.03-.38-1.96-1.21-.72-.65-1.21-1.45-1.35-1.69-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.32-.74-1.8-.19-.46-.39-.4-.54-.41h-.46z"/>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>

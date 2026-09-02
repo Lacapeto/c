@@ -1,0 +1,146 @@
+{
+  "$comment": "Canonical model for Student Projects. Not fetched at runtime (no JavaScript); projects.html mirrors these records as static HTML. Records with is_placeholder: true must be replaced before publication.",
+  "entity": "project",
+  "schema_version": "1.0.0",
+  "last_updated": "2026-08-13",
+  "record_count": 5,
+  "fields": {
+    "id": "string (required, unique) — stable slug-style key, prefix 'proj-'.",
+    "title": "string (required) — the project name as it should be displayed.",
+    "date": "string (required) — ISO 8601 date, YYYY-MM-DD.",
+    "category": "string (required) — human-readable category label shown on the card.",
+    "category_id": "string (required) — machine key grouping the project under a filter tab on projects.html.",
+    "description": "string (required) — two to four sentences describing what the project does and how it was built.",
+    "image_url": "string (required) — path, relative to the site root, of the project photograph. A path listed here that does not exist yet is rendered as a placeholder block on projects.html.",
+    "image_alt": "string (required) — alternative text written as though the real photograph were already in place.",
+    "team": "array of string (required) — names of the students who built the project.",
+    "team_note": "string (optional) — present only where the team array is not yet the final, confirmed list.",
+    "status": "string (required) — lifecycle state.",
+    "tags": "array of string (required, 2-5 items) — technologies and domains, used as the card's meta row.",
+    "is_flagship": "boolean (required) — true for the single project featured on the homepage and at the top of projects.html.",
+    "is_placeholder": "boolean (required) — true where the record is illustrative and awaiting real data."
+  },
+  "projects": [
+    {
+      "id": "proj-paravision",
+      "title": "ParaVision",
+      "date": "2026-03-21",
+      "category": "Artificial Intelligence",
+      "category_id": "ai",
+      "description": "An AI-based diagnostic tool built around a computer vision model trained to identify parasites in microscope imagery. ParaVision detects malaria from blood sample images and intestinal parasites from stool sample images, returning a classification the operator can review rather than a bare yes-or-no answer. It was built by students mentored at the hub, and it won the innovation track of the Huawei ICT Competition.",
+      "image_url": "assets/images/photos/huawei-ict-team-medals.jpg",
+      "image_alt": "The ParaVision team demonstrating their diagnostic tool on a laptop beside a microscope, with a blood sample image classified on screen",
+      "team": [
+        "C2P Tech Hub student team"
+      ],
+      "team_note": "PLACEHOLDER FIELD — replace with the individual team members' names before submission. The names are intentionally not invented here because this is a real project and a real competition result.",
+      "status": "Award winner",
+      "tags": [
+        "Computer Vision",
+        "Medical Imaging",
+        "Python",
+        "Deep Learning"
+      ],
+      "is_flagship": true,
+      "is_placeholder": false
+    },
+    {
+      "id": "proj-hausaspeech",
+      "title": "HausaSpeech",
+      "date": "2026-05-09",
+      "category": "Artificial Intelligence",
+      "category_id": "ai",
+      "description": " An open speech corpus and speech-to-text model for Hausa, assembled from volunteer recordings collected around campus. The team is building the labelled dataset first on the argument that the shortage of usable Hausa audio data, not model architecture, is the real constraint.",
+      "image_url": "assets/images/photos/project-hausaspeech.jpg",
+      "image_alt": "A student recording spoken Hausa into a microphone at a laptop workstation, with an audio waveform visible on the screen",
+      "team": [
+        "Placeholder Member One",
+        "Placeholder Member Two",
+        "Placeholder Member Three"
+      ],
+      "team_note": "PLACEHOLDER FIELD — illustrative names only.",
+      "status": "In development",
+      "tags": [
+        "Machine Learning",
+        "Speech Recognition",
+        "Dataset",
+        "Python"
+      ],
+      "is_flagship": false,
+      "is_placeholder": true
+    },
+    {
+      "id": "proj-powerpulse",
+      "title": "PowerPulse",
+      "date": "2026-04-02",
+      "category": "Embedded Systems",
+      "category_id": "embedded",
+      "description": "PLACEHOLDER PROJECT — replace before submission. A low-cost energy monitoring node for hostel blocks, built on an ESP32 with a current transformer clamp on the incoming line. Readings are logged locally and summarised per block so that consumption spikes can be traced to a floor rather than guessed at.",
+      "image_url": "assets/images/photos/project-powerpulse.jpg",
+      "image_alt": "A breadboarded ESP32 energy monitoring node with a current clamp attached, sitting on a workbench beside a multimeter",
+      "team": [
+        "Placeholder Member One",
+        "Placeholder Member Two"
+      ],
+      "team_note": "PLACEHOLDER FIELD — illustrative names only.",
+      "status": "Prototype",
+      "tags": [
+        "ESP32",
+        "Embedded C",
+        "Sensors",
+        "Energy"
+      ],
+      "is_flagship": false,
+      "is_placeholder": true
+    },
+    {
+      "id": "proj-agrisense",
+      "title": "AgriSense",
+      "date": "2026-06-18",
+      "category": "IoT & Mobile",
+      "category_id": "iot",
+      "description": "PLACEHOLDER PROJECT — replace before submission. A soil moisture and temperature sensing network for smallholder farmland around Samaru, reporting over LoRa to a single gateway. The design targets fields with no mains power and no reliable cellular coverage, so each node runs on a solar-topped battery and transmits on a fixed schedule.",
+      "image_url": "assets/images/photos/project-agrisense.jpg",
+      "image_alt": "A solar-powered soil sensor node staked into farmland, with its LoRa antenna visible above the crop line",
+      "team": [
+        "Placeholder Member One",
+        "Placeholder Member Two",
+        "Placeholder Member Three"
+      ],
+      "team_note": "PLACEHOLDER FIELD — illustrative names only.",
+      "status": "Prototype",
+      "tags": [
+        "IoT",
+        "LoRa",
+        "Sensors",
+        "Agriculture"
+      ],
+      "is_flagship": false,
+      "is_placeholder": true
+    },
+    {
+      "id": "proj-saferoute",
+      "title": "SafeRoute ABU",
+      "date": "2026-07-04",
+      "category": "IoT & Mobile",
+      "category_id": "iot",
+      "description": "PLACEHOLDER PROJECT — replace before submission. An Android application that tracks the campus shuttle fleet and gives waiting students a live arrival estimate instead of a timetable nobody trusts. Each vehicle carries a small GPS reporting unit, and the app degrades to the last known position when the network drops.",
+      "image_url": "assets/images/photos/project-saferoute.jpg",
+      "image_alt": "A student holding a phone showing the SafeRoute shuttle tracking map while waiting at a campus bus stop",
+      "team": [
+        "Placeholder Member One",
+        "Placeholder Member Two"
+      ],
+      "team_note": "PLACEHOLDER FIELD — illustrative names only.",
+      "status": "In development",
+      "tags": [
+        "Android",
+        "Kotlin",
+        "GPS",
+        "Mobile"
+      ],
+      "is_flagship": false,
+      "is_placeholder": true
+    }
+  ]
+}

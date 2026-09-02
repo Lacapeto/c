@@ -1,0 +1,139 @@
+{
+  "$comment": "Canonical model for the Student Directory. Not fetched at runtime (no JavaScript); directory.html mirrors these records as static HTML. Every record is a placeholder and must be replaced before publication.",
+  "entity": "student",
+  "schema_version": "1.0.0",
+  "last_updated": "2026-08-13",
+  "record_count": 12,
+  "fields": {
+    "id": "string (required, unique) — stable key, prefix 'stu-', zero-padded to three digits so records sort correctly as strings.",
+    "name": "string (required) — the member's full name as they wish it displayed.",
+    "initials": "string (required, 2 chars) — precomputed monogram for the avatar.",
+    "level": "string (required) — year of study in the Nigerian university convention.",
+    "department": "string (required) — the member's home department.",
+    "focus_area": "string (required) — the technical area the member works in.",
+    "project": "string (required) — title of the hub project the member is currently attached to.",
+    "is_placeholder": "boolean (required) — true for every record currently in this file."
+  },
+  "students": [
+    {
+      "id": "stu-001",
+      "name": "Aisha Muhammad Bello",
+      "initials": "AB",
+      "level": "400L",
+      "department": "Computer Engineering",
+      "focus_area": "Computer Vision",
+      "project": "ParaVision",
+      "is_placeholder": true
+    },
+    {
+      "id": "stu-002",
+      "name": "Ibrahim Sani Abubakar",
+      "initials": "IA",
+      "level": "500L",
+      "department": "Computer Engineering",
+      "focus_area": "Embedded Systems",
+      "project": "PowerPulse",
+      "is_placeholder": true
+    },
+    {
+      "id": "stu-003",
+      "name": "Fatima Yusuf Danjuma",
+      "initials": "FD",
+      "level": "300L",
+      "department": "Computer Engineering",
+      "focus_area": "Frontend Engineering",
+      "project": "SafeRoute ABU",
+      "is_placeholder": true
+    },
+    {
+      "id": "stu-004",
+      "name": "Chinedu Okafor",
+      "initials": "CO",
+      "level": "400L",
+      "department": "Computer Engineering",
+      "focus_area": "Machine Learning",
+      "project": "HausaSpeech",
+      "is_placeholder": true
+    },
+    {
+      "id": "stu-005",
+      "name": "Zainab Aliyu Garba",
+      "initials": "ZG",
+      "level": "500L",
+      "department": "Computer Engineering",
+      "focus_area": "IoT and Sensor Networks",
+      "project": "AgriSense",
+      "is_placeholder": true
+    },
+    {
+      "id": "stu-006",
+      "name": "Emeka Nwachukwu",
+      "initials": "EN",
+      "level": "300L",
+      "department": "Computer Science",
+      "focus_area": "Backend Engineering",
+      "project": "SafeRoute ABU",
+      "is_placeholder": true
+    },
+    {
+      "id": "stu-007",
+      "name": "Hauwa Lawal Idris",
+      "initials": "HI",
+      "level": "400L",
+      "department": "Computer Engineering",
+      "focus_area": "Data Engineering",
+      "project": "HausaSpeech",
+      "is_placeholder": true
+    },
+    {
+      "id": "stu-008",
+      "name": "Abdulrahman Musa Tanko",
+      "initials": "AT",
+      "level": "500L",
+      "department": "Mechatronics Engineering",
+      "focus_area": "Robotics and Control",
+      "project": "PowerPulse",
+      "is_placeholder": true
+    },
+    {
+      "id": "stu-009",
+      "name": "Oluwaseun Adebayo",
+      "initials": "OA",
+      "level": "300L",
+      "department": "Computer Engineering",
+      "focus_area": "Mobile Development",
+      "project": "SafeRoute ABU",
+      "is_placeholder": true
+    },
+    {
+      "id": "stu-010",
+      "name": "Maryam Shehu Usman",
+      "initials": "MU",
+      "level": "400L",
+      "department": "Computer Engineering",
+      "focus_area": "Computer Vision",
+      "project": "ParaVision",
+      "is_placeholder": true
+    },
+    {
+      "id": "stu-011",
+      "name": "Suleiman Bala Mohammed",
+      "initials": "SM",
+      "level": "500L",
+      "department": "Electrical and Electronics Engineering",
+      "focus_area": "Network Engineering",
+      "project": "AgriSense",
+      "is_placeholder": true
+    },
+    {
+      "id": "stu-012",
+      "name": "Ngozi Chukwuma",
+      "initials": "NC",
+      "level": "300L",
+      "department": "Computer Engineering",
+      "focus_area": "Human-Computer Interaction",
+      "project": "SafeRoute ABU",
+      "is_placeholder": true
+    }
+  ]
+}
